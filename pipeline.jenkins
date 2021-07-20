@@ -7,7 +7,7 @@ pipeline {
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
             script {
                 echo "GITURL = ${GIT_URL}"
-                def repo_name = ${GIT_URL}".tokenize('/')
+                def repo_name = ${GIT_URL}".tokenize('//')
                 for(item in repo_name)
                 {
                   echo item
