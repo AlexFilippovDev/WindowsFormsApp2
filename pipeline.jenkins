@@ -11,6 +11,7 @@ pipeline {
      {
          steps
          {
+            echo "${WORKSPACE}"
             script{                        
                     File sourceFolder = new File("${WORKSPACE}\${BRANCH_NAME}\Bin");
                     File  destinationFolder = new File("F:\\FinalBuilds");                                                   
