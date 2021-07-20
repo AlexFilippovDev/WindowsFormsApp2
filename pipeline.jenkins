@@ -12,7 +12,8 @@ pipeline {
          steps
          {
             echo "${WORKSPACE}"
-            script{                        
+            script{    
+            
                     File sourceFolder = new File("${WORKSPACE}\\${BRANCH_NAME}\\Bin");
                     File  destinationFolder = new File("F:\\FinalBuilds\\");                                                   
                     File[] listOfFiles = sourceFolder.listFiles();
