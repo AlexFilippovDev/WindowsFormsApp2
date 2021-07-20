@@ -6,6 +6,7 @@ pipeline {
         steps {
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
             script {
+                echo "${GIT_URL}"
                 def repo_name = "${WORKSPACE}".tokenize('\\')[2].replace("_${BRANCH_NAME}","")
                 echo repo_name
                 bat "xcopy \"${WORKSPACE}\\$repo_name\\Bin\\Debug\\\"  \"F:\\FinalBuilds\\\" /E"   
