@@ -8,7 +8,7 @@ pipeline {
             script {
                 def repo_name = "${WORKSPACE}".tokenize('\\')[2].replace("_${BRANCH_NAME}","")
                 echo repo_name
-                bat "xcopy \"${WORKSPACE}\\${BRANCH_NAME}\\{$repo_name}\\Bin\\Debug\\\"  \"F:\\FinalBuilds\\\" /E"   
+                bat "xcopy \"${WORKSPACE}\\${BRANCH_NAME}\\$repo_name\\Bin\\Debug\\\"  \"F:\\FinalBuilds\\\" /E"   
             }
         }
      }
