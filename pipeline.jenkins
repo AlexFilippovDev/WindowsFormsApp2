@@ -4,6 +4,7 @@ pipeline {
    stages {
      stage('build') {
         steps {
+        
             set pathFromCopy = "${WSPACE_PATH}/${ITEM_FULL_NAME}/${BRANCH_NAME}/Bin"
             echo "BUILDPATH = ${BUILD_PATH}"
             echo "Builder = "+pathFromCopy
