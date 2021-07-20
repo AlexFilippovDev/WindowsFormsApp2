@@ -12,20 +12,7 @@ pipeline {
          steps
          {
             echo "${WORKSPACE}"
-            script{    
-            
-                    File sourceFolder = new File("${WORKSPACE}\\${BRANCH_NAME}\\Bin");
-                    File  destinationFolder = new File("F:\\FinalBuilds\\");                                                   
-                    File[] listOfFiles = sourceFolder.listFiles();
-                    echo "Files Total: " + listOfFiles.length;  
-
-                    for (File file : listOfFiles) {
-                        if (file.isFile()) {
-                            echo file.getName()                                                                
-                            Files.copy(Paths.get(file.path), Paths.get("F:\\FinalBuilds\\"));                                   
-                        }
-                    }                  
-                }     
+            bat "xcopy ""${WORKSPACE}\\${BRANCH_NAME}\\Bin""  ""F:\\FinalBuilds\\"" /E"
          }
      }
    }
