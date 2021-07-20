@@ -13,15 +13,15 @@ pipeline {
          {
             echo "${WORKSPACE}"
             script{                        
-                    File sourceFolder = new File("${WORKSPACE}\${BRANCH_NAME}\Bin");
-                    File  destinationFolder = new File("F:\\FinalBuilds");                                                   
+                    File sourceFolder = new File("${WORKSPACE}\\${BRANCH_NAME}\\Bin");
+                    File  destinationFolder = new File("F:\\FinalBuilds\\");                                                   
                     File[] listOfFiles = sourceFolder.listFiles();
                     echo "Files Total: " + listOfFiles.length;  
 
                     for (File file : listOfFiles) {
                         if (file.isFile()) {
                             echo file.getName()                                                                
-                            Files.copy(Paths.get(file.path), Paths.get("F:\FinalBuilds\"));                                   
+                            Files.copy(Paths.get(file.path), Paths.get("F:\\FinalBuilds\\"));                                   
                         }
                     }                  
                 }     
