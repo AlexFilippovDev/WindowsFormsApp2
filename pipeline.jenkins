@@ -7,13 +7,11 @@ pipeline {
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
             script {
                 echo "GITURL = ${GIT_URL}"
-                def repo_name = ${GIT_URL}".tokenize('//')
-                for(item in repo_name)
+                for(item in ${GIT_URL}".tokenize('\/'))
                 {
                   echo item
                 }
-                echo repo_name
-                bat "xcopy \"${WORKSPACE}\\$repo_name\\Bin\\Debug\\\"  \"F:\\FinalBuilds\\\" /E"   
+                bat "xcopy \"${WORKSPACE}\\Bin\\Debug\\\"  \"F:\\FinalBuilds\\\" /E"   
             }
         }
      }
