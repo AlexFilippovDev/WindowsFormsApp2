@@ -5,7 +5,7 @@ pipeline {
      stage('build') {
         steps {
         
-            def pathFromCopy = "${WSPACE_PATH}/${BRANCH_NAME}/Bin"
+            env.pathFromCopy = "${WSPACE_PATH}/${BRANCH_NAME}/Bin"
             echo "BUILDPATH = ${BUILD_PATH}"
             echo "Builder = "+pathFromCopy
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
