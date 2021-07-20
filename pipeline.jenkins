@@ -11,7 +11,7 @@ pipeline {
      {
          steps
          {
-            bat "xcopy /s '${WORKSPACE}/${BRANCH_NAME}/Bin/' 'F:/FinalBuilds'"
+            sh 'xcopy "${WORKSPACE}\${BRANCH_NAME}\Bin\" "F:\FinalBuilds\" /O /X /E /H /K'
          }
      }
    }
