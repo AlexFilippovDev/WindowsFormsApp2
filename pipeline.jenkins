@@ -4,6 +4,7 @@ pipeline {
    stages {
      stage('build') {
         steps {  
+        
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
         }
      }
