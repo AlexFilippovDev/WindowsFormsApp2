@@ -7,7 +7,7 @@ pipeline {
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
             script {
                 repo_name = "${WORKSPACE}";
-                repo_name = repo_name.tokenize('\');
+                repo_name = repo_name.tokenize("\");
                 echo repo_name
                 bat "xcopy \"${WORKSPACE}\\${BRANCH_NAME}\\{$NODE_NAME}\\Bin\\Debug\\\"  \"F:\\FinalBuilds\\\" /E"   
             }
