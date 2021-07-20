@@ -4,7 +4,7 @@ pipeline {
    stages {
      stage('build') {
         steps {  
-        
+            echo "BUILDPATH = ${BUILD_PATH}"
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
         }
      }
