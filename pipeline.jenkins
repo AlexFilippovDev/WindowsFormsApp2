@@ -4,9 +4,11 @@ pipeline {
    stages {
      stage('build') {
         steps {
+            
             echo "FULL WORKSPACE = $WORKSPACE"
             echo "WSPACE_PATH = ${WSPACE_PATH}"
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
+            bat "xcopy /s \"${WORKSPACE}\${BRANCH_NAME}\Bin\" F:\FinalBuilds"
         }
      }
    }
