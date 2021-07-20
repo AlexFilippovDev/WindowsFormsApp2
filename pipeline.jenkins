@@ -7,10 +7,7 @@ pipeline {
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
             script {
                 echo "GITURL = ${GIT_URL}"
-                for(item in ${GIT_URL}".tokenize('/'))
-                {
-                  echo item
-                }
+                echo scm.getUserRemoteConfigs()[0].getUrl().tokenize('/')[3].split("\\.")[0]
                 bat "xcopy \"${WORKSPACE}\\Bin\\Debug\\\"  \"F:\\FinalBuilds\\\" /E"   
             }
         }
