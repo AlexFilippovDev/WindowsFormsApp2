@@ -5,6 +5,7 @@ pipeline {
      stage('build') {
         steps {
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
+            bat "xcopy \"${WORKSPACE}\\${BRANCH_NAME}\\Bin\"  \"F:\\FinalBuilds\\\" /E"
         }
      }
      stage('CopyToExchange')
@@ -12,7 +13,7 @@ pipeline {
          steps
          {
             echo "${WORKSPACE}"
-            bat "xcopy ""${WORKSPACE}\\${BRANCH_NAME}\\Bin""  ""F:\\FinalBuilds\\"" /E"
+            
          }
      }
    }
