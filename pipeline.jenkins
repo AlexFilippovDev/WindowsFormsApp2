@@ -15,9 +15,9 @@ pipeline {
                 def repo_name = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/')[3].split("\\.")[0]
                 def destfolder = "F:\\FinalBuilds\\${BRANCH_NAME}"
                 bat "rmdir $destfolder"
-                bat "mkdir $destfolder"
+                bat "if not exist $destfolder mkdir $destfolder"
                 
-                bat "xcopy \"${WORKSPACE}\\$repo_name\\Bin\\Debug\\\"  $destfolder /E"   
+                bat "xcopy \"${WORKSPACE}\\$repo_name\\Bin\\Debug\\\"  $destfolder /K /D /H /Y"   
             }
             
          }
