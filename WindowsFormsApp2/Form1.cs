@@ -20,6 +20,7 @@ namespace WindowsFormsApp2
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("It's Something_Issue");
+            textBox1.Text = "button is pressed";
         }
     }
 }
