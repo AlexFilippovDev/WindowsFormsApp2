@@ -5,20 +5,19 @@ pipeline {
      stage('build') {
         steps {
             bat "\"${tool 'MSBuild'}\" WindowsFormsApp2.sln"
-            script {
-                def repo_name = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/')[3].split("\\.")[0]
-                def destfolder = "F:\\FinalBuilds\\${BRANCH_NAME}"
-                bat "mkdir $destfolder"
-                
-                bat "xcopy \"${WORKSPACE}\\$repo_name\\Bin\\Debug\\\"  $destfolder /E"   
-            }
         }
      }
      stage('CopyToExchange')
      {
          steps
          {
-            echo "${WORKSPACE}"
+            script {
+                def repo_name = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/')[3].split("\\.")[0]
+                def destfolder = "F:\\FinalBuilds\\${BRANCH_NAME}"
+                bat "if not exist $destfolder mkdir $destfolder"
+                
+                bat "xcopy \"${WORKSPACE}\\$repo_name\\Bin\\Debug\\\"  $destfolder /K /D /H /Y"   
+            }
             
          }
      }
